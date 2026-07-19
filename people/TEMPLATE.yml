@@ -1,0 +1,54 @@
+# Entry template for the CompChemURG Directory.
+#
+# 1. Copy this file to people/your-name.yml (lowercase, hyphen-separated,
+#    e.g. jane-doe.yml). If that filename is already taken, disambiguate
+#    with a middle initial, e.g. jane-a-doe.yml.
+# 2. Fill in the fields below. Required fields are marked "required";
+#    everything else is optional and can be left out entirely.
+# 3. Open a pull request. Please only add yourself — see CONTRIBUTING.md.
+
+# required. Your name, as you'd like it displayed.
+name: "Jane Doe"
+
+# required. Your surname (or the equivalent for alphabetical sorting).
+# Stated explicitly rather than parsed from `name`, since "last word of
+# the name" doesn't work for everyone.
+surname_sort: "Doe"
+
+# required. Your institution, company, lab, or equivalent.
+affiliation: "University of Somewhere"
+
+# optional. City and/or country. Feel free to leave this out if you'd
+# rather not disclose it more precisely than your affiliation already does.
+location: "City, Country"
+
+# required. A short list of your research areas/keywords, in your own
+# words (up to 6). Used for search on the Directory page.
+research_areas:
+  - "density functional theory"
+  - "machine learning potentials"
+
+# required, at least one. Links to your work/profile. Include any of the
+# keys below that apply to you; omit the ones that don't.
+links:
+  website: "https://example.com"
+  # lab_website: "https://example.com/lab"
+  # google_scholar: "https://scholar.google.com/citations?user=XXXX"
+  # orcid: "https://orcid.org/0000-0000-0000-0000"
+  # linkedin: "https://www.linkedin.com/in/example"
+
+# optional. Path to a photo you've added under people/photos/, e.g.
+# people/photos/jane-doe.jpg. Keep it under 1MB.
+# photo: "people/photos/jane-doe.jpg"
+
+# optional, and entirely up to you. Group(s) you self-identify with, in
+# your own words. Leave this out (or leave the list empty) if you'd
+# rather not share — it's never required and never inferred.
+identities: []
+
+# optional. A short bio, plain text only (no markdown/HTML), 500
+# characters or fewer.
+# bio: "A sentence or two about your work."
+
+# required. Today's date, as YYYY-MM-DD.
+date_added: "2026-01-01"
