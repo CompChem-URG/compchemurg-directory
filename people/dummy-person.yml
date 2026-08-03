@@ -1,0 +1,19 @@
+# DUMMY TEST ENTRY — used to preview the Directory page in a PR. Not a real person.
+
+name: "Dummy Person"
+surname_sort: "Person"
+affiliation: "Example University"
+location: "Testville, Testland"
+
+research_areas:
+  - "density functional theory"
+  - "machine learning potentials"
+
+links:
+  website: "https://example.com"
+
+photo: "people/photos/dummy-person.jpg"
+
+bio: "This is a placeholder bio used to preview the directory card layout. It is intentionally long enough to demonstrate the capped, scrollable bio region: the text is clipped to a few lines and you can scroll within the card to read the rest without the whole page moving. Real entries can use this space for a sentence or two about their research, background, and interests."
+
+date_added: "2026-08-03"

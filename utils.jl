@@ -53,6 +53,7 @@ function _render_card(e)
     links = get(e, "links", Dict())
     bio = get(e, "bio", "")
     identities = get(e, "identities", String[])
+    photo = get(e, "photo", "")
 
     data_areas = escape_html(join(areas, "|"))
     data_location = escape_html(location)
@@ -62,8 +63,13 @@ function _render_card(e)
     identities_html = isempty(identities) ?
         "" :
         "<div class=\"person-identities\">$(join((escape_html(i) for i in identities), ", "))</div>"
+    photo_html = isempty(photo) ?
+        "" :
+        "<img class=\"person-photo\" src=\"/$(escape_html(photo))\" alt=\"Photo of $name\" loading=\"lazy\">"
 
     return """<div class="person-card" data-research-areas="$data_areas" data-location="$data_location">
+  $photo_html
+  <div class="person-info">
   <div class="person-name">$name</div>
   <div class="person-affiliation">$affiliation</div>
   $location_html
@@ -71,6 +77,7 @@ function _render_card(e)
   $(_render_links(links))
   $bio_html
   $identities_html
+  </div>
 </div>"""
 end
 

@@ -4,7 +4,7 @@ Add here global page variables to use throughout your website.
 +++
 title = "CompChemURG Directory"
 description = "A community directory of people from underrepresented groups in computational chemistry"
-authors = "CompChemURG"
+authors = "William Glass and CompChemURG"
 prepath = "compchemurg-directory/"
 website_url   = "https://compchemurg-directory.github.io/compchemurg-directory/"
 +++

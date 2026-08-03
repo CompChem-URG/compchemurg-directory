@@ -34,7 +34,14 @@ julia --project=. -e 'using Pkg; Pkg.instantiate()'
 julia --project=. -e 'using Franklin; serve()'
 ```
 
-This builds the site into `__site/` and serves it locally with live-reload (default: http://localhost:8000). `__site/` is gitignored — it's only needed for local previewing and is rebuilt by the deploy workflow.
+Open http://localhost:8000 in your browser. Edits to pages, `_layout/`, and
+`people/*.yml` live-reload automatically; SCSS changes need a manual recompile
+(see [Styling](#styling)). `__site/` is gitignored and rebuilt by the deploy
+workflow.
+
+> Preview through `serve()`, not a plain static server on `__site/` — the
+> production build prefixes asset paths for GitHub Pages, so CSS won't load at
+> the server root.
 
 ### Validating entries locally
 

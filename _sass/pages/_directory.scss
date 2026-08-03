@@ -29,6 +29,9 @@
 }
 
 .person-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.25rem;
   background-color: $message-background-color;
@@ -37,6 +40,28 @@
   &.is-hidden {
     display: none;
   }
+
+  @media (max-width: 38em) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+// Scoped to beat Franklin's `.franklin-content img { width: 70% }`.
+.person-card .person-photo {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.person-info {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .person-name {
@@ -80,6 +105,23 @@
 .person-bio {
   margin-top: 0.5rem;
   margin-bottom: 0;
+  line-height: 1.5;
+  // Cap to ~4 lines and scroll within the card; `contain` keeps the
+  // scroll from chaining to the page.
+  max-height: 6em;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darken($message-background-color, 15%);
+    border-radius: 3px;
+  }
 }
 
 .person-identities {
