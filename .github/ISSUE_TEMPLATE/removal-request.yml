@@ -1,0 +1,51 @@
+name: Removal request
+description: Ask for an entry to be removed from the directory.
+title: "Removal request: "
+labels: ["removal-request"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name of the person
+      description: The name as it appears in the directory.
+    validations:
+      required: true
+
+  - type: input
+    id: entry
+    attributes:
+      label: Entry file or link
+      description: The entry's filename under people/ (e.g. jane-doe.yml) or a link to their directory page, if you have it.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Reason
+      options:
+        - No longer wish to be listed
+        - Passed away
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Anything else that would help a maintainer act on this request.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to this person
+      options:
+        - Myself
+        - Family member
+        - Colleague
+        - Other
+    validations:
+      required: true
