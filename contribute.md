@@ -8,9 +8,11 @@ title = "Contribute"
 
 This directory only lists people who have added themselves — please don't add someone else without their knowledge and consent.
 
-1. Fork the [repository](https://github.com/CompChem-URG/compchemurg-directory).
-2. Copy [`people/TEMPLATE.yml`](https://github.com/CompChem-URG/compchemurg-directory/blob/main/people/TEMPLATE.yml) to `people/your-name.yml` and fill in your details.
-3. Open a pull request. An automated check validates the file, then a maintainer reviews and merges it.
+You don't need to install anything — this can all be done in your browser.
+
+1. Open [`people/TEMPLATE.yml`](https://github.com/CompChem-URG/compchemurg-directory/blob/main/people/TEMPLATE.yml) and copy its contents.
+2. Click [create a new file in `people/`](https://github.com/CompChem-URG/compchemurg-directory/new/main/people) — GitHub makes your own copy of the repository automatically — then name it `your-name.yml`, paste the template in, and fill in your details.
+3. Click **Propose new file**, then **Create pull request**. An automated check validates the file, then a maintainer reviews and merges it.
 
 Full instructions, the entry format, and how to update your own entry later are in [CONTRIBUTING.md](https://github.com/CompChem-URG/compchemurg-directory/blob/main/CONTRIBUTING.md).
 
@@ -23,7 +25,7 @@ Fill in this form instead and a maintainer will add your entry for you. Submitti
   <input type="text" name="_honey" style="display:none">
   <input type="hidden" name="_subject" value="New directory entry submission">
   <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://compchemurg-directory.github.io/compchemurg-directory/thanks/">
+  <input type="hidden" name="_next" value="https://compchem-urg.github.io/compchemurg-directory/thanks/">
 
   <label for="form-name">Name (required)</label>
   <input type="text" id="form-name" name="Name" required>
