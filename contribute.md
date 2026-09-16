@@ -8,21 +8,11 @@ title = "Contribute"
 
 Entries are only ever added with the consent of the person listed. Usually that means adding yourself — please don't add someone else on their behalf. (If you'd rather not do it yourself, you can email us and we'll add it for you; see below.)
 
-Pick whichever of these suits you.
+### With a GitHub account
 
-### Using the form on GitHub
+[Fill in the entry form](https://github.com/CompChem-URG/compchemurg-directory/issues/new?template=add-entry.yml) and a pull request is opened for you automatically — no forking, no git, and nothing to install. An automated check validates the entry, then a maintainer reviews and merges it.
 
-The simplest option if you have a GitHub account. [Fill in the entry form](https://github.com/CompChem-URG/compchemurg-directory/issues/new?template=add-entry.yml) and a pull request is opened for you automatically — no forking, no git, and nothing to install. A maintainer then reviews and merges it.
-
-### Editing the files yourself
-
-If you're comfortable with GitHub and would rather write the entry directly:
-
-1. Open [`people/TEMPLATE.yml`](https://github.com/CompChem-URG/compchemurg-directory/blob/main/people/TEMPLATE.yml) and copy its contents.
-2. Click [create a new file in `people/`](https://github.com/CompChem-URG/compchemurg-directory/new/main/people) — GitHub makes your own copy of the repository automatically — then name it `your-name.yml`, paste the template in, and fill in your details.
-3. Click **Propose new file**, then **Create pull request**. An automated check validates the file, then a maintainer reviews and merges it.
-
-Full instructions and the entry format are in [CONTRIBUTING.md](https://github.com/CompChem-URG/compchemurg-directory/blob/main/CONTRIBUTING.md).
+To include a photo, drag an image into the form's photo box.
 
 ### Without a GitHub account
 
@@ -39,7 +29,7 @@ Emailing us your details is your confirmation that you consent to them being pub
 
 ## Updating your entry
 
-Open a pull request editing your existing `people/your-name.yml` file, or email [compchemurg@gmail.com](mailto:compchemurg@gmail.com) with the changes.
+Email [compchemurg@gmail.com](mailto:compchemurg@gmail.com) with the changes and a maintainer will apply them. The entry form only creates new entries, so it can't be used to update an existing one.
 
 ## Request a removal
 

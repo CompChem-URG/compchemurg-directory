@@ -88,10 +88,13 @@ body:
     validations:
       required: false
 
-  - type: markdown
+  - type: textarea
+    id: photo
     attributes:
-      value: |
-        **Photos:** not handled by this form. If you'd like one, say so in a comment after submitting and a maintainer will help you add it to the pull request.
+      label: Photo (optional)
+      description: Drag an image file into this box to attach it, or leave it blank. Under 1MB; a square image works best.
+    validations:
+      required: false
 
   - type: checkboxes
     id: consent

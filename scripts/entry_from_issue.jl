@@ -61,6 +61,21 @@ function slugify(name::AbstractString)
     return slug
 end
 
+const PHOTO_HOST_RE = r"^https://(github\.com/user-attachments/assets/|user-images\.githubusercontent\.com/|private-user-images\.githubusercontent\.com/)"
+
+function parse_photo_url(value::AbstractString)
+    isempty(value) && return ""
+
+    m = match(r"!\[[^\]]*\]\(([^)\s]+)", value)
+    url = m !== nothing ? m.captures[1] : strip(value)
+
+    occursin(r"^\s*$", url) && return ""
+    if !occursin(PHOTO_HOST_RE, url)
+        throw(EntryError("the photo needs to be attached by dragging the image into the form, rather than linked from elsewhere"))
+    end
+    return url
+end
+
 function yaml_string(value::AbstractString)
     escaped = replace(value, "\\" => "\\\\", "\"" => "\\\"")
     return "\"$escaped\""
@@ -135,14 +150,15 @@ function build_entry(sections::Dict{String,String})
     isempty(bio) || println(io, "\nbio: ", yaml_string(bio))
     println(io, "\ndate_added: ", yaml_string(string(today())))
 
-    return slugify(name), String(take!(io))
+    photo_url = parse_photo_url(get_field("Photo (optional)"))
+    return slugify(name), String(take!(io)), photo_url
 end
 
 function main()
     body = get(ENV, "ISSUE_BODY", "")
     isempty(strip(body)) && throw(EntryError("the issue body was empty"))
 
-    slug, content = build_entry(parse_issue_body(body))
+    slug, content, photo_url = build_entry(parse_issue_body(body))
     path = joinpath(PEOPLE_DIR, "$slug.yml")
 
     if isfile(path)
@@ -151,6 +167,7 @@ function main()
 
     write(path, content)
     println(slug)
+    println(photo_url)
 end
 
 try

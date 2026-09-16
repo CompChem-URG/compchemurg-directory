@@ -38,8 +38,28 @@ jobs:
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          if slug=$(julia --project=. scripts/entry_from_issue.jl 2>error.txt); then
+          if output=$(julia --project=. scripts/entry_from_issue.jl 2>error.txt); then
+            slug=$(echo "$output" | sed -n 1p)
+            photo_url=$(echo "$output" | sed -n 2p)
             echo "slug=$slug" >> "$GITHUB_OUTPUT"
+
+            if [ -n "$photo_url" ]; then
+              curl -sSL --max-filesize 1000000 -o photo.tmp "$photo_url" || {
+                echo "The attached photo couldn't be downloaded, or is larger than 1MB." > error.txt
+                exit 1
+              }
+              case "$(file --mime-type -b photo.tmp)" in
+                image/jpeg) ext=jpg ;;
+                image/png)  ext=png ;;
+                image/webp) ext=webp ;;
+                *)
+                  echo "The attached photo isn't a JPEG, PNG or WebP image." > error.txt
+                  exit 1
+                  ;;
+              esac
+              mv photo.tmp "people/photos/$slug.$ext"
+              printf '\nphoto: "people/photos/%s.%s"\n' "$slug" "$ext" >> "people/$slug.yml"
+            fi
           else
             {
               echo "error<<EOF"
@@ -66,6 +86,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add "people/$SLUG.yml"
+          git add "people/photos/$SLUG."* 2>/dev/null || true
           git commit -m "Add directory entry for $SLUG
 
           Generated from issue #$ISSUE."
