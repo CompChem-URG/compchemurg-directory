@@ -6,11 +6,17 @@ This directory only lists people who have added themselves. **Do not add another
 
 ## Adding yourself
 
-1. Fork this repository.
-2. Copy [`people/TEMPLATE.yml`](people/TEMPLATE.yml) to `people/your-name.yml` (lowercase, hyphen-separated — e.g. `jane-doe.yml`). If that name is already taken, disambiguate with a middle initial (`jane-a-doe.yml`).
-3. Fill in the fields. `name`, `surname_sort`, `affiliation`, `research_areas`, at least one entry under `links`, and `date_added` are required; everything else — `location`, `photo`, `identities`, `bio` — is optional and can be left out entirely.
-4. If you'd like a photo, add it under `people/photos/` (under 1MB) and reference it from your entry's `photo` field.
-5. Open a pull request. A GitHub Action automatically checks your file against the schema; a maintainer then reviews and merges it.
+You don't need to install anything — this can all be done in your browser.
+
+1. Open [`people/TEMPLATE.yml`](people/TEMPLATE.yml) and copy its contents.
+2. Click [**create a new file in `people/`**](../../new/main/people). GitHub will make your own copy of the repository automatically the first time you do this.
+3. Name the file `your-name.yml` (lowercase, hyphen-separated — e.g. `jane-doe.yml`). If that name is already taken, disambiguate with a middle initial (`jane-a-doe.yml`).
+4. Paste the template in and fill it out. `name`, `surname_sort`, `affiliation`, `research_areas`, at least one entry under `links`, and `date_added` are required; everything else — `location`, `photo`, `identities`, `bio` — is optional and can be left out entirely.
+5. Click **Propose new file**, then **Create pull request**. A GitHub Action automatically checks your file against the schema; a maintainer then reviews and merges it.
+
+To include a photo, add it under `people/photos/` (under 1MB) and reference it from your entry's `photo` field. Uploading images is easier after step 5 — add it to the same pull request, or just mention in the pull request that you'd like one and a maintainer will help.
+
+If you'd rather work locally: fork the repository, clone your fork, add your file on a branch, push, and open a pull request. (A plain clone of this repository isn't enough — you need a fork to have somewhere to push to.)
 
 Prefer not to use GitHub? Use the [form on the Contribute page](https://compchem-urg.github.io/compchemurg-directory/contribute/) instead — it emails your details to a maintainer, who opens the pull request for you.
 
