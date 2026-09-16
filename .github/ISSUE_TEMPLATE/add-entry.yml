@@ -1,0 +1,101 @@
+name: Add my entry to the directory
+description: Add yourself to the directory. No git or forking needed.
+title: "Add entry: "
+labels: ["new-entry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the boxes below and a pull request is opened for you automatically.
+
+        Fields marked with a red asterisk are required — the rest you can leave blank. Please only add **yourself**; your entry is published publicly and you can have it removed at any time.
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: As you'd like it displayed.
+      placeholder: Jane Doe
+    validations:
+      required: true
+
+  - type: input
+    id: surname_sort
+    attributes:
+      label: Surname for sorting
+      description: Which part of your name the directory sorts under.
+      placeholder: Doe
+    validations:
+      required: true
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation
+      placeholder: University of Somewhere
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: "One per line. Use any of: `website`, `lab_website`, `google_scholar`, `orcid`, `linkedin`."
+      placeholder: |
+        website: https://example.com
+        orcid: https://orcid.org/0000-0000-0000-0000
+    validations:
+      required: true
+
+  - type: textarea
+    id: research_areas
+    attributes:
+      label: Research areas
+      description: One per line, up to 6, in your own words.
+      placeholder: |
+        density functional theory
+        machine learning potentials
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location (optional)
+      placeholder: City, Country
+    validations:
+      required: false
+
+  - type: input
+    id: identities
+    attributes:
+      label: Group(s) you self-identify with (optional)
+      description: Comma-separated, in your own words. Entirely up to you, and published alongside the rest of your entry.
+      placeholder: ""
+    validations:
+      required: false
+
+  - type: textarea
+    id: bio
+    attributes:
+      label: Short bio (optional)
+      description: 500 characters or fewer.
+      placeholder: A sentence or two about your work.
+    validations:
+      required: false
+
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo (optional)
+      description: Drag an image file into this box. Under 1MB; square works best.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirmation
+      options:
+        - label: This entry is about me, and I consent to it being published in the public directory.
+          required: true

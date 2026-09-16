@@ -1,0 +1,130 @@
+name: Create entry from issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-entry:
+    if: contains(github.event.issue.labels.*.name, 'new-entry')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.12.6'
+
+      - name: Cache Julia
+        uses: actions/cache@v4
+        with:
+          path: ~/.julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('**/Project.toml', '**/Manifest.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-julia-
+
+      - name: Install dependencies
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Build entry from the issue
+        id: build
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          if output=$(julia --project=. scripts/entry_from_issue.jl 2>error.txt); then
+            slug=$(echo "$output" | sed -n 1p)
+            photo_url=$(echo "$output" | sed -n 2p)
+            echo "slug=$slug" >> "$GITHUB_OUTPUT"
+
+            if [ -n "$photo_url" ]; then
+              curl -sSL --max-filesize 1000000 -o photo.tmp "$photo_url" || {
+                echo "The attached photo couldn't be downloaded, or is larger than 1MB." > error.txt
+                exit 1
+              }
+              case "$(file --mime-type -b photo.tmp)" in
+                image/jpeg) ext=jpg ;;
+                image/png)  ext=png ;;
+                image/webp) ext=webp ;;
+                *)
+                  echo "The attached photo isn't a JPEG, PNG or WebP image." > error.txt
+                  exit 1
+                  ;;
+              esac
+              mv photo.tmp "people/photos/$slug.$ext"
+              printf '\nphoto: "people/photos/%s.%s"\n' "$slug" "$ext" >> "people/$slug.yml"
+            fi
+          else
+            {
+              echo "error<<EOF"
+              cat error.txt
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+      - name: Validate the generated entry
+        run: julia --project=. scripts/validate_people.jl
+
+      - name: Open a pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLUG: ${{ steps.build.outputs.slug }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+          branch="entry/$SLUG"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add "people/$SLUG.yml"
+          git add "people/photos/$SLUG."* 2>/dev/null || true
+          git commit -m "Add directory entry for $SLUG
+
+          Generated from issue #$ISSUE."
+          git push --force origin "$branch"
+
+          if url=$(gh pr list --head "$branch" --state open --json url --jq '.[0].url') && [ -n "$url" ]; then
+            echo "Updated existing pull request $url"
+          else
+            url=$(gh pr create \
+              --base main \
+              --head "$branch" \
+              --title "Add directory entry for $SLUG" \
+              --body "Generated automatically from #$ISSUE, which contains the submitter's consent confirmation.
+
+          The schema check has already passed. A maintainer still needs to confirm this plausibly comes from the person themselves before merging.
+
+          Closes #$ISSUE")
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Comment with the pull request link
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Thanks! Your entry has been turned into a pull request: ${{ steps.pr.outputs.url }}
+
+          A maintainer will review and merge it, and your entry will appear in the directory shortly after. Nothing further is needed from you.
+
+          If you'd like to add a photo, or spotted a mistake, just reply here."
+
+      - name: Report a problem back to the submitter
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REASON: ${{ steps.build.outputs.error }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Thanks for submitting! Your entry couldn't be added automatically:
+
+          > ${REASON:-Something went wrong while processing this issue.}
+
+          You can edit the issue above to correct it and this will run again, or just leave it — a maintainer will pick it up either way."

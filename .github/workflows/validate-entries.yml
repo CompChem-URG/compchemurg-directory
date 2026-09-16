@@ -2,8 +2,6 @@ name: Validate directory entries
 
 on:
   pull_request:
-    paths:
-      - "people/**"
 
 jobs:
   validate:
