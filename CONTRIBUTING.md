@@ -2,11 +2,13 @@
 
 ## Please read this first
 
-This directory only lists people who have added themselves. **Do not add another person without their explicit knowledge and consent** — even with good intentions. If you'd like to nominate someone else, point them to this repository so they can add themselves.
+Entries are only ever added with the consent of the person listed. **Do not add another person** — even with good intentions. If you'd like to nominate someone else, point them here so they can add themselves. (If someone emails us their own details, a maintainer may add the entry for them.)
 
 ## Adding yourself
 
-You don't need to install anything — this can all be done in your browser.
+The easiest way is the [entry form](../../issues/new?template=add-entry.yml) — fill it in and a pull request is opened for you automatically, with no forking and nothing to install.
+
+To write the entry yourself instead, it can still all be done in your browser.
 
 1. Open [`people/TEMPLATE.yml`](people/TEMPLATE.yml) and copy its contents.
 2. Click [**create a new file in `people/`**](../../new/main/people). GitHub will make your own copy of the repository automatically the first time you do this.
@@ -18,7 +20,7 @@ To include a photo, add it under `people/photos/` (under 1MB) and reference it f
 
 If you'd rather work locally: fork the repository, clone your fork, add your file on a branch, push, and open a pull request. (A plain clone of this repository isn't enough — you need a fork to have somewhere to push to.)
 
-Prefer not to use GitHub? Use the [form on the Contribute page](https://compchem-urg.github.io/compchemurg-directory/contribute/) instead — it emails your details to a maintainer, who opens the pull request for you.
+No GitHub account? Email [compchemurg@gmail.com](mailto:compchemurg@gmail.com) with your details and a maintainer will add the entry for you — see the [Contribute page](https://compchem-urg.github.io/compchemurg-directory/contribute/) for what to include.
 
 ## Updating your entry
 
@@ -34,4 +36,4 @@ The automated check only validates the YAML file's structure (required fields, v
 
 ## About the data you submit
 
-Opening a pull request with your own `people/*.yml` file, or submitting the contribute form/emailing your details, is your confirmation that you consent to that information being published in this directory. This is separate from the [MIT license](LICENSE) covering this repository's code: the maintainers don't claim rights to reuse your personal data beyond displaying it here, and you can ask for it to be removed at any time via a removal request.
+Opening a pull request with your own `people/*.yml` file, submitting the entry form, or emailing us your details, is your confirmation that you consent to that information being published in this directory. This is separate from the [MIT license](LICENSE) covering this repository's code: the maintainers don't claim rights to reuse your personal data beyond displaying it here, and you can ask for it to be removed at any time via a removal request. See the site's [Privacy](https://compchem-urg.github.io/compchemurg-directory/privacy/) page for the full picture.

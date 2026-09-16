@@ -1,0 +1,102 @@
+name: Add my entry to the directory
+description: Add yourself to the directory without using git. Please only add yourself.
+title: "Add entry: "
+labels: ["new-entry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill this in and a pull request will be opened for you automatically — you don't need to fork anything or know git.
+
+        Please only add **yourself**. Entries are published on a public website; submitting this form is your confirmation that you consent to that. You can ask for your entry to be removed at any time.
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: As you'd like it displayed.
+      placeholder: Jane Doe
+    validations:
+      required: true
+
+  - type: input
+    id: surname_sort
+    attributes:
+      label: Surname for sorting
+      description: Used to sort the directory alphabetically. Stated explicitly because "last word of the name" doesn't work for everyone.
+      placeholder: Doe
+    validations:
+      required: true
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation
+      description: Your institution, company, lab, or equivalent.
+      placeholder: University of Somewhere
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: |
+        One per line, as `key: url`. Valid keys are `website`, `lab_website`, `google_scholar`, `orcid`, `linkedin`. At least one is required.
+      placeholder: |
+        website: https://example.com
+        orcid: https://orcid.org/0000-0000-0000-0000
+    validations:
+      required: true
+
+  - type: textarea
+    id: research_areas
+    attributes:
+      label: Research areas
+      description: Up to 6, one per line, in your own words. Used for search on the Directory page.
+      placeholder: |
+        density functional theory
+        machine learning potentials
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location (optional)
+      description: City and/or country. Leave blank if you'd rather not say more precisely than your affiliation already does.
+      placeholder: City, Country
+    validations:
+      required: false
+
+  - type: input
+    id: identities
+    attributes:
+      label: Group(s) you self-identify with (optional)
+      description: |
+        Comma-separated, in your own words. **Entirely up to you** — this is never required and never inferred. Leave it blank if you'd rather not share. Note that anything you put here is published publicly alongside the rest of your entry.
+      placeholder: ""
+    validations:
+      required: false
+
+  - type: textarea
+    id: bio
+    attributes:
+      label: Short bio (optional)
+      description: Plain text, 500 characters or fewer.
+      placeholder: A sentence or two about your work.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        **Photos:** not handled by this form. If you'd like one, say so in a comment after submitting and a maintainer will help you add it to the pull request.
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirmation
+      options:
+        - label: This entry is about me, and I consent to the information above being published in the public directory.
+          required: true

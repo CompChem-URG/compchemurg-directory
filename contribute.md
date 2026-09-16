@@ -6,55 +6,43 @@ title = "Contribute"
 
 ## Add yourself to the directory
 
-This directory only lists people who have added themselves — please don't add someone else without their knowledge and consent.
+Entries are only ever added with the consent of the person listed. Usually that means adding yourself — please don't add someone else on their behalf. (If you'd rather not do it yourself, you can email us and we'll add it for you; see below.)
 
-You don't need to install anything — this can all be done in your browser.
+Pick whichever of these suits you.
+
+### Using the form on GitHub
+
+The simplest option if you have a GitHub account. [Fill in the entry form](https://github.com/CompChem-URG/compchemurg-directory/issues/new?template=add-entry.yml) and a pull request is opened for you automatically — no forking, no git, and nothing to install. A maintainer then reviews and merges it.
+
+### Editing the files yourself
+
+If you're comfortable with GitHub and would rather write the entry directly:
 
 1. Open [`people/TEMPLATE.yml`](https://github.com/CompChem-URG/compchemurg-directory/blob/main/people/TEMPLATE.yml) and copy its contents.
 2. Click [create a new file in `people/`](https://github.com/CompChem-URG/compchemurg-directory/new/main/people) — GitHub makes your own copy of the repository automatically — then name it `your-name.yml`, paste the template in, and fill in your details.
 3. Click **Propose new file**, then **Create pull request**. An automated check validates the file, then a maintainer reviews and merges it.
 
-Full instructions, the entry format, and how to update your own entry later are in [CONTRIBUTING.md](https://github.com/CompChem-URG/compchemurg-directory/blob/main/CONTRIBUTING.md).
+Full instructions and the entry format are in [CONTRIBUTING.md](https://github.com/CompChem-URG/compchemurg-directory/blob/main/CONTRIBUTING.md).
 
-## Prefer not to use GitHub?
+### Without a GitHub account
 
-Fill in this form instead and a maintainer will add your entry for you. Submitting it is your confirmation that you consent to this information being published in the directory.
+Email [compchemurg@gmail.com](mailto:compchemurg@gmail.com) and a maintainer will add your entry for you. Please include:
 
-~~~
-<form action="https://formsubmit.co/compchemurg@gmail.com" method="POST" class="entry-form">
-  <input type="text" name="_honey" style="display:none">
-  <input type="hidden" name="_subject" value="New directory entry submission">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://compchem-urg.github.io/compchemurg-directory/thanks/">
+- **Your name**, as you'd like it displayed, and the surname to sort it under
+- **Your affiliation** — institution, company, lab, or equivalent
+- **At least one link** — website, lab website, Google Scholar, ORCID, or LinkedIn
+- **Your research areas**, up to six, in your own words
 
-  <label for="form-name">Name (required)</label>
-  <input type="text" id="form-name" name="Name" required>
+Optionally, your location, a short bio (500 characters or fewer), a photo, and any group(s) you self-identify with. Those are entirely up to you and never required.
 
-  <label for="form-email">Your email, so we can follow up (required)</label>
-  <input type="email" id="form-email" name="Email" required>
+Emailing us your details is your confirmation that you consent to them being published here — see [Privacy](/privacy/).
 
-  <label for="form-affiliation">Affiliation (required)</label>
-  <input type="text" id="form-affiliation" name="Affiliation" required>
+## Updating your entry
 
-  <label for="form-links">Links &mdash; website, Google Scholar, ORCID, etc. (required, at least one)</label>
-  <textarea id="form-links" name="Links" rows="2" required></textarea>
-
-  <label for="form-location">Location (optional)</label>
-  <input type="text" id="form-location" name="Location">
-
-  <label for="form-areas">Research areas (optional, comma-separated)</label>
-  <input type="text" id="form-areas" name="Research areas">
-
-  <label for="form-identities">Group(s) you self-identify with (optional &mdash; entirely up to you, never required)</label>
-  <input type="text" id="form-identities" name="Identities">
-
-  <label for="form-bio">Short bio (optional)</label>
-  <textarea id="form-bio" name="Bio" rows="3"></textarea>
-
-  <button type="submit">Submit entry</button>
-</form>
-~~~
+Open a pull request editing your existing `people/your-name.yml` file, or email [compchemurg@gmail.com](mailto:compchemurg@gmail.com) with the changes.
 
 ## Request a removal
 
 To ask for an entry to be removed, please [open a removal request](https://github.com/CompChem-URG/compchemurg-directory/issues/new?template=removal-request.yml), or email [compchemurg@gmail.com](mailto:compchemurg@gmail.com). Anyone can request a removal, not only the person listed &mdash; for example, to let us know a colleague has passed away.
+
+Removal takes the entry off this site immediately — see [Privacy](/privacy/).
