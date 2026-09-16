@@ -1,14 +1,14 @@
 name: Add my entry to the directory
-description: Add yourself to the directory without using git. Please only add yourself.
+description: Add yourself to the directory. No git or forking needed.
 title: "Add entry: "
 labels: ["new-entry"]
 body:
   - type: markdown
     attributes:
       value: |
-        Fill this in and a pull request will be opened for you automatically — you don't need to fork anything or know git.
+        Fill in the boxes below and a pull request is opened for you automatically.
 
-        Please only add **yourself**. Entries are published on a public website; submitting this form is your confirmation that you consent to that. You can ask for your entry to be removed at any time.
+        Fields marked with a red asterisk are required — the rest you can leave blank. Please only add **yourself**; your entry is published publicly and you can have it removed at any time.
 
   - type: input
     id: name
@@ -23,7 +23,7 @@ body:
     id: surname_sort
     attributes:
       label: Surname for sorting
-      description: Used to sort the directory alphabetically. Stated explicitly because "last word of the name" doesn't work for everyone.
+      description: Which part of your name the directory sorts under.
       placeholder: Doe
     validations:
       required: true
@@ -32,7 +32,6 @@ body:
     id: affiliation
     attributes:
       label: Affiliation
-      description: Your institution, company, lab, or equivalent.
       placeholder: University of Somewhere
     validations:
       required: true
@@ -41,8 +40,7 @@ body:
     id: links
     attributes:
       label: Links
-      description: |
-        One per line, as `key: url`. Valid keys are `website`, `lab_website`, `google_scholar`, `orcid`, `linkedin`. At least one is required.
+      description: "One per line. Use any of: `website`, `lab_website`, `google_scholar`, `orcid`, `linkedin`."
       placeholder: |
         website: https://example.com
         orcid: https://orcid.org/0000-0000-0000-0000
@@ -53,7 +51,7 @@ body:
     id: research_areas
     attributes:
       label: Research areas
-      description: Up to 6, one per line, in your own words. Used for search on the Directory page.
+      description: One per line, up to 6, in your own words.
       placeholder: |
         density functional theory
         machine learning potentials
@@ -64,7 +62,6 @@ body:
     id: location
     attributes:
       label: Location (optional)
-      description: City and/or country. Leave blank if you'd rather not say more precisely than your affiliation already does.
       placeholder: City, Country
     validations:
       required: false
@@ -73,8 +70,7 @@ body:
     id: identities
     attributes:
       label: Group(s) you self-identify with (optional)
-      description: |
-        Comma-separated, in your own words. **Entirely up to you** — this is never required and never inferred. Leave it blank if you'd rather not share. Note that anything you put here is published publicly alongside the rest of your entry.
+      description: Comma-separated, in your own words. Entirely up to you, and published alongside the rest of your entry.
       placeholder: ""
     validations:
       required: false
@@ -83,7 +79,7 @@ body:
     id: bio
     attributes:
       label: Short bio (optional)
-      description: Plain text, 500 characters or fewer.
+      description: 500 characters or fewer.
       placeholder: A sentence or two about your work.
     validations:
       required: false
@@ -92,7 +88,7 @@ body:
     id: photo
     attributes:
       label: Photo (optional)
-      description: Drag an image file into this box to attach it, or leave it blank. Under 1MB; a square image works best.
+      description: Drag an image file into this box. Under 1MB; square works best.
     validations:
       required: false
 
@@ -101,5 +97,5 @@ body:
     attributes:
       label: Confirmation
       options:
-        - label: This entry is about me, and I consent to the information above being published in the public directory.
+        - label: This entry is about me, and I consent to it being published in the public directory.
           required: true
