@@ -8,7 +8,7 @@ This project was inspired by USC's [Women in Theoretical/Computational Chemistry
 
 ## Contributing
 
-To add yourself to the directory, or to update your existing entry, see [CONTRIBUTING.md](CONTRIBUTING.md) — or, if you'd rather not use GitHub, fill in the form on the site's [Contribute](https://compchemurg-directory.github.io/compchemurg-directory/contribute/) page, or email [compchemurg@gmail.com](mailto:compchemurg@gmail.com).
+To add yourself to the directory, or to update your existing entry, see [CONTRIBUTING.md](CONTRIBUTING.md) — or, if you'd rather not use GitHub, fill in the form on the site's [Contribute](https://compchem-urg.github.io/compchemurg-directory/contribute/) page, or email [compchemurg@gmail.com](mailto:compchemurg@gmail.com).
 
 To request that an entry be removed, [open a removal request](../../issues/new?template=removal-request.yml) or email [compchemurg@gmail.com](mailto:compchemurg@gmail.com).
 

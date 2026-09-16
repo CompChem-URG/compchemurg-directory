@@ -23,7 +23,7 @@ Fill in this form instead and a maintainer will add your entry for you. Submitti
   <input type="text" name="_honey" style="display:none">
   <input type="hidden" name="_subject" value="New directory entry submission">
   <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://compchemurg-directory.github.io/compchemurg-directory/thanks/">
+  <input type="hidden" name="_next" value="https://compchem-urg.github.io/compchemurg-directory/thanks/">
 
   <label for="form-name">Name (required)</label>
   <input type="text" id="form-name" name="Name" required>

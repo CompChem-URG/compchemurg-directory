@@ -12,7 +12,7 @@ This directory only lists people who have added themselves. **Do not add another
 4. If you'd like a photo, add it under `people/photos/` (under 1MB) and reference it from your entry's `photo` field.
 5. Open a pull request. A GitHub Action automatically checks your file against the schema; a maintainer then reviews and merges it.
 
-Prefer not to use GitHub? Use the [form on the Contribute page](https://compchemurg-directory.github.io/compchemurg-directory/contribute/) instead — it emails your details to a maintainer, who opens the pull request for you.
+Prefer not to use GitHub? Use the [form on the Contribute page](https://compchem-urg.github.io/compchemurg-directory/contribute/) instead — it emails your details to a maintainer, who opens the pull request for you.
 
 ## Updating your entry
 
