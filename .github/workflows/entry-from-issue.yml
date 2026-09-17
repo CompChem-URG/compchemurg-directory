@@ -2,7 +2,7 @@ name: Create entry from issue
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, labeled]
 
 permissions:
   contents: write
