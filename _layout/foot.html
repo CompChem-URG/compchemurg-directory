@@ -6,8 +6,6 @@
         {{ insert foot_highlight.html }}
     {{ end }}
     <script>
-      // The main CompChemURG site shares this hostname and differs only by path,
-      // so it needs naming explicitly to count as external.
       var SIBLING_SITE = "/compchemurg/";
       document.querySelectorAll("a[href]").forEach(function (link) {
         if (link.protocol !== "http:" && link.protocol !== "https:") return;
