@@ -85,6 +85,12 @@ function normalize_url(key::AbstractString, url::AbstractString)
     if key == "orcid" && occursin(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$", url)
         return "https://orcid.org/" * url
     end
+    if key == "linkedin" && occursin(r"^[\w\-]+$", url)
+        return "https://www.linkedin.com/in/" * url
+    end
+    if key == "google_scholar" && occursin(r"^[\w\-]+$", url)
+        return "https://scholar.google.com/citations?user=" * url
+    end
     if !occursin(r"^https?://", url) && occursin(r"^[\w.-]+\.[A-Za-z]{2,}(/.*)?$", url)
         return "https://" * url
     end
