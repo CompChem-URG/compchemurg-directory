@@ -71,7 +71,6 @@ body:
     attributes:
       label: Group(s) you self-identify with (optional)
       description: Comma-separated, in your own words. Entirely up to you, and published alongside the rest of your entry.
-      placeholder: ""
     validations:
       required: false
 
