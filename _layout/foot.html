@@ -5,5 +5,19 @@
     {{ if hascode }}
         {{ insert foot_highlight.html }}
     {{ end }}
+    <script>
+      // The main CompChemURG site shares this hostname and differs only by path,
+      // so it needs naming explicitly to count as external.
+      var SIBLING_SITE = "/compchemurg/";
+      document.querySelectorAll("a[href]").forEach(function (link) {
+        if (link.protocol !== "http:" && link.protocol !== "https:") return;
+        var sameSite =
+          link.hostname === window.location.hostname &&
+          link.pathname.indexOf(SIBLING_SITE) !== 0;
+        if (sameSite) return;
+        link.target = "_blank";
+        if (!link.rel.includes("noopener")) link.rel = (link.rel + " noopener").trim();
+      });
+    </script>
   </body>
 </html>
