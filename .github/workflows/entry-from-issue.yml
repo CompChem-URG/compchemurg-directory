@@ -72,7 +72,7 @@ jobs:
       - name: Validate the generated entry
         run: julia --project=. scripts/validate_people.jl
 
-      - name: Open a pull request
+      - name: Push the entry branch
         id: pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -92,30 +92,31 @@ jobs:
           Generated from issue #$ISSUE."
           git push --force origin "$branch"
 
-          if url=$(gh pr list --head "$branch" --state open --json url --jq '.[0].url') && [ -n "$url" ]; then
-            echo "Updated existing pull request $url"
+          existing=$(gh pr list --head "$branch" --state open --json url --jq '.[0].url // empty')
+          if [ -n "$existing" ]; then
+            echo "url=$existing" >> "$GITHUB_OUTPUT"
+            echo "existing=true" >> "$GITHUB_OUTPUT"
           else
-            url=$(gh pr create \
-              --base main \
-              --head "$branch" \
-              --title "Add directory entry for $SLUG" \
-              --body "Generated automatically from #$ISSUE, which contains the submitter's consent confirmation.
-
-          The schema check has already passed. A maintainer still needs to confirm this plausibly comes from the person themselves before merging.
-
-          Closes #$ISSUE")
+            echo "url=${{ github.server_url }}/${{ github.repository }}/compare/main...$branch?expand=1&title=Add+directory+entry+for+$SLUG&body=Closes+%23$ISSUE" >> "$GITHUB_OUTPUT"
+            echo "existing=false" >> "$GITHUB_OUTPUT"
           fi
-          echo "url=$url" >> "$GITHUB_OUTPUT"
 
       - name: Comment with the pull request link
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Thanks! Your entry has been turned into a pull request: ${{ steps.pr.outputs.url }}
+          if [ "${{ steps.pr.outputs.existing }}" = "true" ]; then
+            gh issue comment "${{ github.event.issue.number }}" --body "Thanks! Your entry has been updated on the existing pull request: ${{ steps.pr.outputs.url }}
 
-          A maintainer will review and merge it, and your entry will appear in the directory shortly after. Nothing further is needed from you.
+          A maintainer will review and merge it. Nothing further is needed from you."
+          else
+            gh issue comment "${{ github.event.issue.number }}" --body "Thanks! Your entry has been prepared and checked automatically.
 
-          If you'd like to add a photo, or spotted a mistake, just reply here."
+          A maintainer will open it as a pull request and merge it shortly, and your entry will appear in the directory soon after. Nothing further is needed from you.
+
+          <!-- maintainers: open the pull request here -->
+          ${{ steps.pr.outputs.url }}"
+          fi
 
       - name: Report a problem back to the submitter
         if: failure()
