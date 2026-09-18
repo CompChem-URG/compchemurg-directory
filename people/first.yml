@@ -1,0 +1,13 @@
+name: "First"
+surname_sort: "Last"
+affiliation: "Test University"
+
+research_areas:
+  - "test area"
+
+links:
+  website: "https://test.com"
+
+bio: "Test"
+
+date_added: "2026-09-18"
