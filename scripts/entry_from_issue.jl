@@ -81,6 +81,22 @@ function yaml_string(value::AbstractString)
     return "\"$escaped\""
 end
 
+function normalize_url(key::AbstractString, url::AbstractString)
+    if key == "orcid" && occursin(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$", url)
+        return "https://orcid.org/" * url
+    end
+    if key == "linkedin" && occursin(r"^[\w\-]+$", url)
+        return "https://www.linkedin.com/in/" * url
+    end
+    if key == "google_scholar" && occursin(r"^[\w\-]+$", url)
+        return "https://scholar.google.com/citations?user=" * url
+    end
+    if !occursin(r"^https?://", url) && occursin(r"^[\w.-]+\.[A-Za-z]{2,}(/.*)?$", url)
+        return "https://" * url
+    end
+    return url
+end
+
 function parse_links(value::AbstractString)
     isempty(value) && throw(EntryError("\"Links\" is required — give at least one, as `key: url`"))
 
@@ -94,8 +110,9 @@ function parse_links(value::AbstractString)
         if !(key in VALID_LINK_KEYS)
             throw(EntryError("`$key` isn't a recognised link type. Use one of: $(join(VALID_LINK_KEYS, ", "))"))
         end
+        url = normalize_url(key, url)
         if !occursin(r"^https?://", url)
-            throw(EntryError("the `$key` link must start with http:// or https://, got `$url`"))
+            throw(EntryError("couldn't read `$url` as a web address for `$key` — it should look like https://example.com"))
         end
         push!(links, key => url)
     end
