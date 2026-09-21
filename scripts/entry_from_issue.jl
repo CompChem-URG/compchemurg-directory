@@ -128,7 +128,7 @@ function build_entry(sections::Dict{String,String})
         throw(EntryError(
             "the confirmation box at the bottom of the form isn't ticked. Please edit the issue " *
             "and tick it to confirm this entry is about you and that you consent to it being " *
-            "published, and this will run again.",
+            "published. A maintainer will then re-run this.",
         ))
     end
 
