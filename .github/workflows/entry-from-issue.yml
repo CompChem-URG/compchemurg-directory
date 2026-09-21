@@ -140,9 +140,7 @@ jobs:
         run: |
           gh issue comment "${{ github.event.issue.number }}" --body "Thanks! Your entry has been turned into a pull request: ${{ steps.pr.outputs.url }}
 
-          A maintainer will review and merge it, and your entry will appear in the directory shortly after. Nothing further is needed from you.
-
-          To add a photo or correct a mistake, **edit the issue above** and the pull request will update automatically. Replying in a comment won't change your entry — photos in particular have to go in the issue's Photo box."
+          A maintainer will review and merge it, and your entry will appear in the directory shortly after. Nothing further is needed from you."
 
       - name: Report a problem back to the submitter
         if: failure()

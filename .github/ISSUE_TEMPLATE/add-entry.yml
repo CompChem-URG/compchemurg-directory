@@ -87,7 +87,7 @@ body:
     id: photo
     attributes:
       label: Photo (optional)
-      description: Drag an image file into this box — it must go here, not in a comment. Under 1MB; square works best.
+      description: Drag an image file into this box. Under 1MB; square works best.
     validations:
       required: false
 
