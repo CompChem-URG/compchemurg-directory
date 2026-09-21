@@ -66,8 +66,15 @@ const PHOTO_HOST_RE = r"^https://(github\.com/user-attachments/assets/|user-imag
 function parse_photo_url(value::AbstractString)
     isempty(value) && return ""
 
-    m = match(r"!\[[^\]]*\]\(([^)\s]+)", value)
-    url = m !== nothing ? m.captures[1] : strip(value)
+    markdown = match(r"!\[[^\]]*\]\(([^)\s]+)", value)
+    html = match(r"<img[^>]*\ssrc=[\"']([^\"']+)[\"']"i, value)
+    url = if markdown !== nothing
+        markdown.captures[1]
+    elseif html !== nothing
+        html.captures[1]
+    else
+        strip(value)
+    end
 
     occursin(r"^\s*$", url) && return ""
     if !occursin(PHOTO_HOST_RE, url)
