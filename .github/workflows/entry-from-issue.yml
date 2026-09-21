@@ -78,6 +78,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLUG: ${{ steps.build.outputs.slug }}
           ISSUE: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
           set -euo pipefail
           branch="entry/$SLUG"
@@ -98,7 +99,7 @@ jobs:
             url=$(gh pr create \
               --base main \
               --head "$branch" \
-              --title "Add directory entry for $SLUG" \
+              --title "$ISSUE_TITLE" \
               --body "Generated automatically from #$ISSUE, which contains the submitter's consent confirmation.
 
           The schema check has already passed. A maintainer still needs to confirm this plausibly comes from the person themselves before merging.
