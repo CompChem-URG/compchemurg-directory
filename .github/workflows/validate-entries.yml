@@ -1,7 +1,9 @@
 name: Validate directory entries
 
 on:
-  pull_request:
+  push:
+    branches-ignore:
+      - main
 
 jobs:
   validate:

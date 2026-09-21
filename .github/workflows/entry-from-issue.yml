@@ -2,7 +2,7 @@ name: Create entry from issue
 
 on:
   issues:
-    types: [labeled]
+    types: [labeled, edited]
 
 concurrency:
   group: entry-${{ github.event.issue.number }}
@@ -156,4 +156,4 @@ jobs:
 
           > ${REASON:-Something went wrong while processing this issue.}
 
-          You can edit the issue above to correct it, and a maintainer will re-run this. Or just leave it — a maintainer will pick it up either way."
+          You can edit the issue above to correct it and this will run again, or just leave it — a maintainer will pick it up either way."
