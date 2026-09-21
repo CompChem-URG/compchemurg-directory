@@ -1,0 +1,15 @@
+name: "TestFirst"
+surname_sort: "TestLast"
+affiliation: "University Test"
+
+research_areas:
+  - "test"
+
+links:
+  website: "https://example.com"
+
+bio: "Test"
+
+date_added: "2026-09-21"
+
+photo: "people/photos/testfirst.png"
