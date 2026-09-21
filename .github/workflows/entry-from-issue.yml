@@ -70,7 +70,33 @@ jobs:
           fi
 
       - name: Validate the generated entry
-        run: julia --project=. scripts/validate_people.jl
+        id: validate
+        run: |
+          if ! julia --project=. scripts/validate_people.jl > validate.txt 2>&1; then
+            {
+              echo "error<<WORKFLOW_EOF"
+              cat validate.txt
+              echo "WORKFLOW_EOF"
+            } >> "$GITHUB_OUTPUT"
+            cat validate.txt
+            exit 1
+          fi
+          cat validate.txt
+
+      - name: Check the site still builds with this entry
+        id: render
+        run: |
+          if ! julia --project=. -e 'using Franklin; optimize()' > build.txt 2>&1; then
+            {
+              echo "error<<WORKFLOW_EOF"
+              echo "The site failed to build with this entry in place."
+              echo "WORKFLOW_EOF"
+            } >> "$GITHUB_OUTPUT"
+            tail -40 build.txt
+            exit 1
+          fi
+          test -f __site/directory/index.html
+          grep -q "person-card" __site/directory/index.html
 
       - name: Open a pull request
         id: pr
@@ -122,7 +148,7 @@ jobs:
         if: failure()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REASON: ${{ steps.build.outputs.error }}
+          REASON: ${{ steps.build.outputs.error || steps.validate.outputs.error || steps.render.outputs.error }}
         run: |
           gh issue comment "${{ github.event.issue.number }}" --body "Thanks for submitting! Your entry couldn't be added automatically:
 
