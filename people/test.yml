@@ -1,0 +1,13 @@
+name: "Test"
+surname_sort: "Two"
+affiliation: "Test2 University"
+
+research_areas:
+  - "DFT"
+
+links:
+  website: "https://test2example.com"
+
+bio: "Test 2"
+
+date_added: "2026-09-21"
