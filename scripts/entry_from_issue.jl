@@ -124,6 +124,14 @@ end
 function build_entry(sections::Dict{String,String})
     get_field(name) = get(sections, name, "")
 
+    if !occursin(r"\[[xX]\]", get_field("Confirmation"))
+        throw(EntryError(
+            "the confirmation box at the bottom of the form isn't ticked. Please edit the issue " *
+            "and tick it to confirm this entry is about you and that you consent to it being " *
+            "published, and this will run again.",
+        ))
+    end
+
     for required in ["Name", "Surname for sorting", "Affiliation", "Research areas"]
         isempty(get_field(required)) && throw(EntryError("\"$required\" is required but was left blank"))
     end

@@ -2,7 +2,11 @@ name: Create entry from issue
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [labeled, edited]
+
+concurrency:
+  group: entry-${{ github.event.issue.number }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
