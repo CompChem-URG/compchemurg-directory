@@ -109,16 +109,55 @@ function normalize_url(key::AbstractString, url::AbstractString)
     return url
 end
 
+const LINK_FIELDS = [
+    ("Website", "website"),
+    ("Google Scholar", "google_scholar"),
+    ("ORCID", "orcid"),
+    ("LinkedIn", "linkedin"),
+]
+
+const KEY_ALIASES = Dict(
+    "website" => "website", "web site" => "website", "homepage" => "website",
+    "lab website" => "lab_website", "lab" => "lab_website", "lab site" => "lab_website",
+    "google scholar" => "google_scholar", "scholar" => "google_scholar",
+    "orcid" => "orcid", "orcid id" => "orcid",
+    "linkedin" => "linkedin", "linked in" => "linkedin",
+)
+
+function host_key(url::AbstractString)
+    m = match(r"^https?://([^/\s]+)", url)
+    m === nothing && return ""
+    return replace(lowercase(m.captures[1]), r"^www\." => "")
+end
+
+function parse_other_links(value::AbstractString)
+    links = Pair{String,String}[]
+    for line in lines_of(value)
+        url = normalize_url("", strip(line))
+        occursin(r"^https?://", url) || throw(EntryError(
+            "couldn't read `$line` under \"Other links\" as a web address — it should look like https://example.com",
+        ))
+        key = host_key(url)
+        isempty(key) || push!(links, key => url)
+    end
+    return links
+end
+
+function normalize_key(raw::AbstractString)
+    cleaned = strip(replace(lowercase(raw), r"[^a-z0-9]+" => " "))
+    return get(KEY_ALIASES, cleaned, cleaned)
+end
+
 function parse_links(value::AbstractString)
-    isempty(value) && throw(EntryError("\"Links\" is required — give at least one, as `key: url`"))
+    isempty(value) && throw(EntryError("please fill in at least one link — a website, Google Scholar, ORCID, LinkedIn or anything under \"Other links\""))
 
     links = Pair{String,String}[]
     for line in lines_of(value)
-        m = match(r"^[-*]?\s*([A-Za-z_]+)\s*[:=]\s*(\S+)$", line)
+        m = match(r"^[-*]?\s*([A-Za-z][A-Za-z _-]*?)\s*[:=]\s*(\S+)$", line)
         if m === nothing
             throw(EntryError("couldn't read the link line `$line` — use `key: url`, e.g. `website: https://example.com`"))
         end
-        key, url = lowercase(m.captures[1]), m.captures[2]
+        key, url = normalize_key(m.captures[1]), m.captures[2]
         if !(key in VALID_LINK_KEYS)
             throw(EntryError("`$key` isn't a recognised link type. Use one of: $(join(VALID_LINK_KEYS, ", "))"))
         end
@@ -144,6 +183,26 @@ function build_entry(sections::Dict{String,String})
         ))
     end
 
+    links = Pair{String,String}[]
+    for (label, key) in LINK_FIELDS
+        raw = get_field(label)
+        isempty(raw) || push!(links, key => normalize_url(key, strip(raw)))
+    end
+    append!(links, parse_other_links(get_field("Other links")))
+
+    seen = String[]
+    links = [p for p in links if !(p.first in seen) && (push!(seen, p.first); true)]
+
+    if isempty(links)
+        links = parse_links(get_field("Links"))
+    else
+        for (key, url) in links
+            occursin(r"^https?://", url) || throw(EntryError(
+                "couldn't read `$url` as a web address for `$key` — it should look like https://example.com",
+            ))
+        end
+    end
+
     name = isempty(get_field("Full name")) ? get_field("Name") : get_field("Full name")
     isempty(name) && throw(EntryError("\"Full name\" is required but was left blank"))
     surname = surname_of(name)
@@ -151,7 +210,6 @@ function build_entry(sections::Dict{String,String})
     for required in ["Affiliation", "Research areas"]
         isempty(get_field(required)) && throw(EntryError("\"$required\" is required but was left blank"))
     end
-    links = parse_links(get_field("Links"))
 
     research_areas = lines_of(get_field("Research areas"))
     isempty(research_areas) && throw(EntryError("\"Research areas\" needs at least one entry"))
