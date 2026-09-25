@@ -1,0 +1,20 @@
+name: "Michelle Sahai"
+surname_sort: "Sahai"
+affiliation: "Brunel University of London"
+location: "London, United Kingdom"
+
+research_areas:
+  - "AI-driven drug discovery"
+  - "computational structural biology"
+  - "molecular dynamics and biomolecular simulation"
+  - "membrane protein structure and pharmacology"
+
+links:
+  website: "https://www.brunel.ac.uk/people/michelle-sahai"
+  orcid: "https://orcid.org/0000-0002-2898-3112"
+
+bio: "Dr Michelle Sahai is a Lecturer in Biosciences (Drug Discovery) at Brunel University London. Her research combines AI-driven drug discovery, computational structural biology and molecular simulations to understand protein–ligand interactions and develop new therapeutic approaches, with a particular interest in membrane transporters and the molecular mechanisms of drug action."
+
+date_added: "2026-09-25"
+
+photo: "people/photos/michelle-sahai.jpg"
