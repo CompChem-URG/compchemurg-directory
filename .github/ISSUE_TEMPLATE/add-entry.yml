@@ -27,16 +27,53 @@ body:
     validations:
       required: true
 
-  - type: textarea
-    id: links
+  - type: markdown
     attributes:
-      label: Links
-      description: "One per line. Use any of: `website`, `lab_website`, `google_scholar`, `orcid`, `linkedin`."
-      placeholder: |
-        website: https://example.com
-        orcid: https://orcid.org/0000-0000-0000-0000
+      value: |
+        **Links** — fill in at least one of the following.
+
+  - type: input
+    id: website
+    attributes:
+      label: Website
+      placeholder: https://example.com
     validations:
-      required: true
+      required: false
+
+  - type: input
+    id: google_scholar
+    attributes:
+      label: Google Scholar
+      placeholder: https://scholar.google.com/citations?user=XXXX
+    validations:
+      required: false
+
+  - type: input
+    id: orcid
+    attributes:
+      label: ORCID
+      placeholder: https://orcid.org/0000-0000-0000-0000
+    validations:
+      required: false
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: LinkedIn
+      placeholder: https://www.linkedin.com/in/example
+    validations:
+      required: false
+
+  - type: textarea
+    id: other_links
+    attributes:
+      label: Other links
+      description: Anything else — social media, GitHub, ResearchGate. One per line.
+      placeholder: |
+        https://github.com/example
+        https://bsky.app/profile/example
+    validations:
+      required: false
 
   - type: textarea
     id: research_areas

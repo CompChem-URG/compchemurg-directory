@@ -8,6 +8,12 @@ const LINK_LABELS = Dict(
     "google_scholar" => "Google Scholar",
     "orcid" => "ORCID",
     "linkedin" => "LinkedIn",
+    "github.com" => "GitHub",
+    "bsky.app" => "Bluesky",
+    "x.com" => "X",
+    "twitter.com" => "X",
+    "researchgate.net" => "ResearchGate",
+    "mastodon.social" => "Mastodon",
 )
 
 escape_html(s) = replace(
