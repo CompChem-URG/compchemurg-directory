@@ -62,9 +62,12 @@ jobs:
                   ;;
               esac
 
-              magick photo.tmp -strip -resize '400x400>' -quality 85 "people/photos/$slug.$ext"
+              sudo apt-get update -qq
+              sudo apt-get install -y -qq imagemagick
+
+              convert photo.tmp -auto-orient -strip -resize '400x400>' -quality 85 "people/photos/$slug.$ext"
               if [ "$(wc -c < "people/photos/$slug.$ext")" -gt 400000 ]; then
-                magick photo.tmp -strip -resize '400x400>' -quality 85 "people/photos/$slug.jpg"
+                convert photo.tmp -auto-orient -strip -resize '400x400>' -quality 85 "people/photos/$slug.jpg"
                 if [ "$ext" != "jpg" ]; then
                   rm -f "people/photos/$slug.$ext"
                   ext=jpg
@@ -110,6 +113,9 @@ jobs:
           fi
           test -f __site/directory/index.html
           grep -q "person-card" __site/directory/index.html
+          if [ -n "$(find people/photos -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.webp' \) -print -quit)" ]; then
+            grep -q "person-photo" __site/directory/index.html
+          fi
 
       - name: Open a pull request
         id: pr
