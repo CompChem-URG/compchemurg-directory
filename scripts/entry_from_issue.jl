@@ -83,6 +83,11 @@ function parse_photo_url(value::AbstractString)
     return url
 end
 
+function surname_of(name::AbstractString)
+    words = filter(!isempty, split(strip(name)))
+    return isempty(words) ? name : last(words)
+end
+
 function yaml_string(value::AbstractString)
     escaped = replace(value, "\\" => "\\\\", "\"" => "\\\"")
     return "\"$escaped\""
@@ -139,11 +144,13 @@ function build_entry(sections::Dict{String,String})
         ))
     end
 
-    for required in ["Name", "Surname for sorting", "Affiliation", "Research areas"]
+    name = isempty(get_field("Full name")) ? get_field("Name") : get_field("Full name")
+    isempty(name) && throw(EntryError("\"Full name\" is required but was left blank"))
+    surname = surname_of(name)
+
+    for required in ["Affiliation", "Research areas"]
         isempty(get_field(required)) && throw(EntryError("\"$required\" is required but was left blank"))
     end
-
-    name = get_field("Name")
     links = parse_links(get_field("Links"))
 
     research_areas = lines_of(get_field("Research areas"))
@@ -158,7 +165,7 @@ function build_entry(sections::Dict{String,String})
 
     io = IOBuffer()
     println(io, "name: ", yaml_string(name))
-    println(io, "surname_sort: ", yaml_string(get_field("Surname for sorting")))
+    println(io, "surname_sort: ", yaml_string(surname))
     println(io, "affiliation: ", yaml_string(get_field("Affiliation")))
     isempty(location) || println(io, "location: ", yaml_string(location))
 
