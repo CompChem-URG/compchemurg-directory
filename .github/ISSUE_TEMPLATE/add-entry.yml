@@ -14,17 +14,8 @@ body:
     id: name
     attributes:
       label: Full name
-      description: Your whole name, as you'd like it shown in the directory.
+      description: As you'd like it shown in the directory. The listing is sorted by the last word you enter here.
       placeholder: Jane Doe
-    validations:
-      required: true
-
-  - type: input
-    id: surname_sort
-    attributes:
-      label: Sort under
-      description: Which part of the name above to sort you by, so the directory can be alphabetical. Repeat it here rather than leaving it out of the full name.
-      placeholder: Doe
     validations:
       required: true
 

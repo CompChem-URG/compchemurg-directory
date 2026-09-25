@@ -83,11 +83,9 @@ function parse_photo_url(value::AbstractString)
     return url
 end
 
-function entry_slug(name::AbstractString, surname::AbstractString)
-    slug = slugify(name)
-    surname_slug = slugify(surname)
-    occursin(surname_slug, slug) && return slug
-    return slug * "-" * surname_slug
+function surname_of(name::AbstractString)
+    words = filter(!isempty, split(strip(name)))
+    return isempty(words) ? name : last(words)
 end
 
 function yaml_string(value::AbstractString)
@@ -147,10 +145,9 @@ function build_entry(sections::Dict{String,String})
     end
 
     name = isempty(get_field("Full name")) ? get_field("Name") : get_field("Full name")
-    surname = isempty(get_field("Sort under")) ? get_field("Surname for sorting") : get_field("Sort under")
-
     isempty(name) && throw(EntryError("\"Full name\" is required but was left blank"))
-    isempty(surname) && throw(EntryError("\"Sort under\" is required but was left blank"))
+    surname = surname_of(name)
+
     for required in ["Affiliation", "Research areas"]
         isempty(get_field(required)) && throw(EntryError("\"$required\" is required but was left blank"))
     end
@@ -193,7 +190,7 @@ function build_entry(sections::Dict{String,String})
     println(io, "\ndate_added: ", yaml_string(string(today())))
 
     photo_url = parse_photo_url(get_field("Photo (optional)"))
-    return entry_slug(name, surname), String(take!(io)), photo_url
+    return slugify(name), String(take!(io)), photo_url
 end
 
 function main()
