@@ -83,6 +83,13 @@ function parse_photo_url(value::AbstractString)
     return url
 end
 
+function entry_slug(name::AbstractString, surname::AbstractString)
+    slug = slugify(name)
+    surname_slug = slugify(surname)
+    occursin(surname_slug, slug) && return slug
+    return slug * "-" * surname_slug
+end
+
 function yaml_string(value::AbstractString)
     escaped = replace(value, "\\" => "\\\\", "\"" => "\\\"")
     return "\"$escaped\""
@@ -139,11 +146,14 @@ function build_entry(sections::Dict{String,String})
         ))
     end
 
-    for required in ["Name", "Surname for sorting", "Affiliation", "Research areas"]
+    name = isempty(get_field("Full name")) ? get_field("Name") : get_field("Full name")
+    surname = isempty(get_field("Sort under")) ? get_field("Surname for sorting") : get_field("Sort under")
+
+    isempty(name) && throw(EntryError("\"Full name\" is required but was left blank"))
+    isempty(surname) && throw(EntryError("\"Sort under\" is required but was left blank"))
+    for required in ["Affiliation", "Research areas"]
         isempty(get_field(required)) && throw(EntryError("\"$required\" is required but was left blank"))
     end
-
-    name = get_field("Name")
     links = parse_links(get_field("Links"))
 
     research_areas = lines_of(get_field("Research areas"))
@@ -158,7 +168,7 @@ function build_entry(sections::Dict{String,String})
 
     io = IOBuffer()
     println(io, "name: ", yaml_string(name))
-    println(io, "surname_sort: ", yaml_string(get_field("Surname for sorting")))
+    println(io, "surname_sort: ", yaml_string(surname))
     println(io, "affiliation: ", yaml_string(get_field("Affiliation")))
     isempty(location) || println(io, "location: ", yaml_string(location))
 
@@ -183,7 +193,7 @@ function build_entry(sections::Dict{String,String})
     println(io, "\ndate_added: ", yaml_string(string(today())))
 
     photo_url = parse_photo_url(get_field("Photo (optional)"))
-    return slugify(name), String(take!(io)), photo_url
+    return entry_slug(name, surname), String(take!(io)), photo_url
 end
 
 function main()

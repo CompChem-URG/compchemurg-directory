@@ -13,8 +13,8 @@ body:
   - type: input
     id: name
     attributes:
-      label: Name
-      description: As you'd like it displayed.
+      label: Full name
+      description: Your whole name, as you'd like it shown in the directory.
       placeholder: Jane Doe
     validations:
       required: true
@@ -22,8 +22,8 @@ body:
   - type: input
     id: surname_sort
     attributes:
-      label: Surname for sorting
-      description: Which part of your name the directory sorts under.
+      label: Sort under
+      description: Which part of the name above to sort you by, so the directory can be alphabetical. Repeat it here rather than leaving it out of the full name.
       placeholder: Doe
     validations:
       required: true
