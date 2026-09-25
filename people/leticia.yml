@@ -1,0 +1,18 @@
+name: "Leticia"
+surname_sort: "Madureira"
+affiliation: "Carnegie Mellon University"
+location: "Pittsburgh, PA, USA"
+
+research_areas:
+  - "Computational Quantum Chemistry"
+  - "AI and Machine Learning"
+  - "Electronic Structure Method Development"
+
+links:
+  linkedin: "https://www.linkedin.com/in/leticia-madureira-276b23180?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+
+bio: "Leticia is a Computational Quantum Chemistry working at Carnegie Mellon as a PhD Candidate. Her research involves exploration of catalysis and different electronic structure methods in the elucidation of chemical bonding interactions."
+
+date_added: "2026-09-25"
+
+photo: "people/photos/leticia.jpg"
