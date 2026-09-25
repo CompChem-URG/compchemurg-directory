@@ -48,8 +48,8 @@ jobs:
             echo "slug=$slug" >> "$GITHUB_OUTPUT"
 
             if [ -n "$photo_url" ]; then
-              curl -sSL --max-filesize 1000000 -o photo.tmp "$photo_url" || {
-                echo "The attached photo couldn't be downloaded, or is larger than 1MB." > error.txt
+              curl -sSL --max-filesize 15000000 -o photo.tmp "$photo_url" || {
+                echo "The attached photo couldn't be downloaded, or is larger than 15MB. Please attach a smaller image." > error.txt
                 exit 1
               }
               case "$(file --mime-type -b photo.tmp)" in
@@ -61,7 +61,16 @@ jobs:
                   exit 1
                   ;;
               esac
-              mv photo.tmp "people/photos/$slug.$ext"
+
+              magick photo.tmp -strip -resize '400x400>' -quality 85 "people/photos/$slug.$ext"
+              if [ "$(wc -c < "people/photos/$slug.$ext")" -gt 400000 ]; then
+                magick photo.tmp -strip -resize '400x400>' -quality 85 "people/photos/$slug.jpg"
+                if [ "$ext" != "jpg" ]; then
+                  rm -f "people/photos/$slug.$ext"
+                  ext=jpg
+                fi
+              fi
+
               printf '\nphoto: "people/photos/%s.%s"\n' "$slug" "$ext" >> "people/$slug.yml"
             fi
           else
