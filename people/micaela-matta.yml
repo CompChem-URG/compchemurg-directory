@@ -1,0 +1,21 @@
+name: "Micaela Matta"
+surname_sort: "Matta"
+affiliation: "King’s College London"
+location: "London, United Kingdom"
+
+research_areas:
+  - "Organic electronics"
+  - "Organic mixed ionic electronic conductors"
+  - "Molecular dynamics simulations"
+  - "Electronic transport"
+  - "Materials discovery"
+  - "Melanin modelling"
+
+links:
+  website: "https://mattaresearch.com"
+  google_scholar: "https://scholar.google.com/citations?user=o4zoWRQAAAAJ&hl=en"
+  orcid: "https://orcid.org/0000-0002-9852-3154"
+  linkedin: "https://www.linkedin.com/in/micaela-matta-a691784a"
+  bsky.app: "https://bsky.app/profile/micaelamatta.bsky.social"
+
+date_added: "2026-09-29"
