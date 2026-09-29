@@ -1,0 +1,26 @@
+name: "Conrad Simoben Veranso"
+surname_sort: "Veranso"
+affiliation: "Freelancer and consulting"
+location: "Canada"
+
+research_areas:
+  - "Molecular modeling"
+  - "Structure- and ligand-based design"
+  - "Binding free-energy methods"
+  - "Computational drug discovery"
+  - "Hit identification and lead optimisation"
+  - "Python/data pipelines"
+
+links:
+  google_scholar: "https://scholar.google.ca/citations?user=qZYGPzIAAAAJ&hl=en"
+  orcid: "https://orcid.org/0000-0002-5958-6961"
+  linkedin: "https://www.linkedin.com/in/conrad-simoben-veranso-phd-msc-amrsc-32899aa1/"
+
+identities:
+  - "Black"
+
+bio: "Computational chemist and drug discovery scientist specializing in AI-driven molecular modelling, CADD, virtual screening, MD simulations, and binding-energy calculations. PhD in Pharmaceutical & Medicinal Chemistry from Martin Luther University, Germany. Postdoc at the Structural Genomics Consortium, Toronto. Experienced in Python/PyTorch, medicinal chemistry, and translational drug discovery. Author of 40+ peer-reviewed publications."
+
+date_added: "2026-09-29"
+
+photo: "people/photos/conrad-simoben-veranso.jpg"
