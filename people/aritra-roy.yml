@@ -1,0 +1,27 @@
+name: "Aritra Roy"
+surname_sort: "Roy"
+affiliation: "London South Bank University"
+location: "London, United Kingdom"
+
+research_areas:
+  - "AI and Machine Learning"
+  - "Text-mining"
+  - "Large Language Models"
+  - "Agentic AI"
+  - "High-throughput Workflow"
+  - "Piezoelectrics"
+
+links:
+  website: "https://aritraroy.live/"
+  google_scholar: "https://scholar.google.co.uk/citations?user=er7v8VoAAAAJ&hl=en"
+  orcid: "https://orcid.org/0000-0003-0243-9124"
+  linkedin: "https://www.linkedin.com/in/aritraroy24/"
+  github.com: "https://github.com/aritraroy24"
+  researchgate.net: "https://www.researchgate.net/profile/Aritra-Roy-5"
+  x.com: "https://x.com/aritraroy24"
+
+bio: "Aritra is a Doctoral Researcher at LSBU, UK, working on AI, machine learning and LLM-based agents for chemistry and materials science. His expertise spans computational modelling, cheminformatics and a wide range of scientific software."
+
+date_added: "2026-09-29"
+
+photo: "people/photos/aritra-roy.jpg"
