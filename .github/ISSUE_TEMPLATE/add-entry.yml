@@ -1,6 +1,6 @@
 name: Add my entry to the directory
 description: Add yourself to the directory. No git or forking needed.
-title: "Add entry: "
+title: "New directory entry"
 labels: ["new-entry"]
 body:
   - type: markdown

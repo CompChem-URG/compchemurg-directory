@@ -248,14 +248,14 @@ function build_entry(sections::Dict{String,String})
     println(io, "\ndate_added: ", yaml_string(string(today())))
 
     photo_url = parse_photo_url(get_field("Photo (optional)"))
-    return slugify(name), String(take!(io)), photo_url
+    return slugify(name), String(take!(io)), photo_url, name
 end
 
 function main()
     body = get(ENV, "ISSUE_BODY", "")
     isempty(strip(body)) && throw(EntryError("the issue body was empty"))
 
-    slug, content, photo_url = build_entry(parse_issue_body(body))
+    slug, content, photo_url, name = build_entry(parse_issue_body(body))
     path = joinpath(PEOPLE_DIR, "$slug.yml")
 
     if isfile(path)
@@ -265,6 +265,7 @@ function main()
     write(path, content)
     println(slug)
     println(photo_url)
+    println(name)
 end
 
 try

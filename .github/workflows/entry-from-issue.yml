@@ -45,7 +45,9 @@ jobs:
           if output=$(julia --project=. scripts/entry_from_issue.jl 2>error.txt); then
             slug=$(echo "$output" | sed -n 1p)
             photo_url=$(echo "$output" | sed -n 2p)
+            name=$(echo "$output" | sed -n 3p)
             echo "slug=$slug" >> "$GITHUB_OUTPUT"
+            echo "name=$name" >> "$GITHUB_OUTPUT"
 
             if [ -n "$photo_url" ]; then
               curl -sSL --max-filesize 15000000 -o photo.tmp "$photo_url" || {
@@ -123,7 +125,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLUG: ${{ steps.build.outputs.slug }}
           ISSUE: ${{ github.event.issue.number }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
+          NAME: ${{ steps.build.outputs.name }}
         run: |
           set -euo pipefail
           branch="entry/$SLUG"
@@ -138,13 +140,15 @@ jobs:
           Generated from issue #$ISSUE."
           git push --force origin "$branch"
 
+          gh issue edit "$ISSUE" --title "Add entry: $NAME"
+
           if url=$(gh pr list --head "$branch" --state open --json url --jq '.[0].url') && [ -n "$url" ]; then
             echo "Updated existing pull request $url"
           else
             url=$(gh pr create \
               --base main \
               --head "$branch" \
-              --title "$ISSUE_TITLE" \
+              --title "Add entry: $NAME" \
               --body "Generated automatically from #$ISSUE, which contains the submitter's consent confirmation.
 
           The schema check has already passed. A maintainer still needs to confirm this plausibly comes from the person themselves before merging.
