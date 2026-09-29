@@ -20,4 +20,6 @@ Everything in this directory was submitted by the person it describes, and anyon
 - **Repository history** — stays in past commits unless we rewrite the history. We are happy to do that on request.
 - **Copies others already made** — forks, clones and search-engine caches of this project are outside our reach.
 
+We act on removal requests from the person listed. We don't take entries down because someone else disputes whether that person belongs in the directory — that isn't ours to rule on. The exception is clear harm, such as impersonation or abuse, which we'll always act on.
+
 **Your rights.** If you want to see, correct, or delete what we hold, or withdraw consent at any time (which takes your entry down) then please email us.

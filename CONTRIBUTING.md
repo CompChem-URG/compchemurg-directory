@@ -1,5 +1,18 @@
 # Contributing
 
+## Who the directory is for
+
+People working in and around computational chemistry who belong to a group underrepresented in the field. That might be underrepresentation by:
+
+- gender
+- ethnicity
+- disability
+- sexual orientation or gender identity
+- being the first in your family to attend university
+- working in an under-resourced institution or region
+
+This list is by no means exhaustive.
+
 ## Please read this first
 
 Entries are only ever added with the consent of the person listed. **Do not add another person** — even with good intentions. If you'd like to nominate someone else, point them here so they can add themselves. (If someone emails us their own details, a maintainer may add the entry for them.)
@@ -24,7 +37,9 @@ Use the [removal request issue template](../../issues/new?template=removal-reque
 
 ## What review checks for
 
-The automated check only validates the YAML file's structure (required fields, valid links, filename format, and so on). A maintainer separately checks that the pull request plausibly comes from the person themselves and isn't spam or abuse before merging.
+The automated check validates the file's structure: required fields, valid links, filename format and so on.
+
+A maintainer then reviews the entry and uses at least one of the links you provide to check you are a real person. We don't assess whether you belong to an underrepresented group; that's your call.
 
 ## About the data you submit
 

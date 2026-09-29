@@ -175,11 +175,12 @@ end
 function build_entry(sections::Dict{String,String})
     get_field(name) = get(sections, name, "")
 
-    if !occursin(r"\[[xX]\]", get_field("Confirmation"))
+    confirmation = get_field("Confirmation")
+    if isempty(confirmation) || occursin(r"\[\s*\]", confirmation)
         throw(EntryError(
-            "the confirmation box at the bottom of the form isn't ticked. Please edit the issue " *
-            "and tick it to confirm this entry is about you and that you consent to it being " *
-            "published, and this will run again.",
+            "please tick both boxes at the bottom of the form — that the entry is about you and " *
+            "that you consent to it being published, and that you consider yourself part of a " *
+            "group underrepresented in computational chemistry. Edit the issue and this will run again.",
         ))
     end
 
@@ -217,7 +218,9 @@ function build_entry(sections::Dict{String,String})
         throw(EntryError("\"Research areas\" has $(length(research_areas)) entries, the maximum is $MAX_RESEARCH_AREAS"))
     end
 
-    identities = filter(!isempty, strip.(split(get_field("Group(s) you self-identify with (optional)"), ",")))
+    identities_raw = get_field("Underrepresented groups you identify with (optional)")
+    isempty(identities_raw) && (identities_raw = get_field("Group(s) you self-identify with (optional)"))
+    identities = filter(!isempty, strip.(split(identities_raw, ",")))
     bio = replace(get_field("Short bio (optional)"), "\n" => " ")
     location = get_field("Location (optional)")
 
