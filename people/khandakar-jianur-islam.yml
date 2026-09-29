@@ -1,0 +1,23 @@
+name: "Khandakar Jianur Islam"
+surname_sort: "Islam"
+affiliation: "M.Sc. Bioinformatics, Jamia Millia Islamia, New Delhi"
+location: "Delhi,India"
+
+research_areas:
+  - "AI- and machine learning-driven computational drug discovery"
+  - "Structural bioinformatics and protein structure modelling"
+  - "Molecular docking and molecular dynamics simulation"
+  - "Structure-based drug discovery and target identification"
+  - "Cheminformatics and virtual screening"
+
+links:
+  linkedin: "https://linkedin.com/in/khandakar-jianur-islam-188710323"
+  github.com: "https://github.com/jianurr"
+
+identities:
+  - "computational drug discovery"
+  - "structural bioinformatics"
+
+bio: "M.Sc. Bioinformatics graduate (Jamia Millia Islamia, 1st Rank) with dissertation research at CSIR-CDRI on structure-based virtual screening, molecular dynamics, and ML-based binding affinity prediction for EGFR mutant inhibitors in NSCLC. Interested in AI-enabled structure-dynamics approaches for drug discovery."
+
+date_added: "2026-09-29"
