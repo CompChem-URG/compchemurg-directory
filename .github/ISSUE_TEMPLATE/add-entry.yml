@@ -10,6 +10,8 @@ body:
 
         Fields marked with a red asterisk are required — the rest you can leave blank. Please only add **yourself**; your entry is published publicly and you can have it removed at any time.
 
+        This directory is for people in computational chemistry who belong to a group underrepresented in the field. We don't ask which group.
+
   - type: input
     id: name
     attributes:
@@ -97,8 +99,9 @@ body:
   - type: input
     id: identities
     attributes:
-      label: Group(s) you self-identify with (optional)
-      description: Comma-separated, in your own words. Entirely up to you, and published alongside the rest of your entry.
+      label: Underrepresented groups you identify with (optional)
+      description: One or more, in your own words, comma-separated. Always fine to leave blank, and published with the rest of your entry.
+      placeholder: e.g. women in STEM, first-generation academic, LGBTQ+
     validations:
       required: false
 
@@ -125,4 +128,6 @@ body:
       label: Confirmation
       options:
         - label: This entry is about me, and I consent to it being published in the public directory.
+          required: true
+        - label: I consider myself part of a group underrepresented in computational chemistry.
           required: true

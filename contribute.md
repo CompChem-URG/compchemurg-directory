@@ -4,6 +4,19 @@ title = "Contribute"
 
 # Contribute
 
+## Who the directory is for
+
+People working in and around computational chemistry who belong to a group underrepresented in the field. That might be underrepresentation by:
+
+- gender
+- ethnicity
+- disability
+- sexual orientation or gender identity
+- being the first in your family to attend university
+- working in an under-resourced institution or region
+
+This list is by no means exhaustive.
+
 ## Add yourself to the directory
 
 Entries are only ever added with the consent of the person listed. Usually that means adding yourself — please don't add someone else on their behalf. (If you'd rather not do it yourself, you can email us and we'll add it for you; see below.)
@@ -23,7 +36,7 @@ Email [compchemurg@gmail.com](mailto:compchemurg@gmail.com) and a maintainer wil
 - **At least one link** — website, lab website, Google Scholar, ORCID, or LinkedIn
 - **Your research areas**, up to six, in your own words
 
-Optionally, your location, a short bio (500 characters or fewer), a photo, and any group(s) you self-identify with. Those are entirely up to you and never required.
+Optionally, your location, a short bio (500 characters or fewer), a photo, and any underrepresented group(s) you identify with. Those are entirely up to you and never required.
 
 Emailing us your details is your confirmation that you consent to them being published here — see [Privacy](/privacy/).
 

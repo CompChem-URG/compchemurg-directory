@@ -217,7 +217,9 @@ function build_entry(sections::Dict{String,String})
         throw(EntryError("\"Research areas\" has $(length(research_areas)) entries, the maximum is $MAX_RESEARCH_AREAS"))
     end
 
-    identities = filter(!isempty, strip.(split(get_field("Group(s) you self-identify with (optional)"), ",")))
+    identities_raw = get_field("Underrepresented groups you identify with (optional)")
+    isempty(identities_raw) && (identities_raw = get_field("Group(s) you self-identify with (optional)"))
+    identities = filter(!isempty, strip.(split(identities_raw, ",")))
     bio = replace(get_field("Short bio (optional)"), "\n" => " ")
     location = get_field("Location (optional)")
 
