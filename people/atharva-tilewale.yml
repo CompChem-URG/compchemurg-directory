@@ -1,0 +1,26 @@
+name: "Atharva Tilewale"
+surname_sort: "Tilewale"
+affiliation: "Gujarat Biotechnology University"
+location: "Gandhinagar, India"
+
+research_areas:
+  - "Computational Biology"
+  - "Drug Discovery"
+  - "Alchemical Free-Energy Calculation"
+  - "Protein Design and Engineering"
+  - "Machine Learning in Biology"
+  - "Molecular Dynamics and Biomolecular Simulations"
+
+links:
+  website: "https://atharvatilewale.github.io"
+  google_scholar: "https://scholar.google.com/citations?user=In4tfIoAAAAJ&hl"
+  orcid: "https://orcid.org/0009-0003-9802-8158"
+  linkedin: "https://linkedin.com/in/atharvatilewale"
+  github.com: "https://github.com/AtharvaTilewale"
+  researchgate.net: "https://www.researchgate.net/profile/Atharva-Tilewale-2"
+
+bio: "Atharva is a Research Fellow at Gujarat Biotechnology University, working at the intersection of computational biology, enzyme engineering, and AI-driven biomolecular design. His interests include protein design and engineering, with expertise in molecular dynamics simulations, alchemical free energy calculations, and computational drug discovery."
+
+date_added: "2026-09-30"
+
+photo: "people/photos/atharva-tilewale.jpg"
