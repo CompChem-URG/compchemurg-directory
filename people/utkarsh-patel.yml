@@ -1,0 +1,20 @@
+name: "Utkarsh Patel"
+surname_sort: "Patel"
+affiliation: "Coventry University"
+location: "Coventry"
+
+research_areas:
+  - "Computational Drug discovery"
+  - "Machine Learning"
+  - "New drug discovery methods"
+  - "De novo molecules"
+
+links:
+  website: "https://utkarshpatel2405.github.io/UtkarshPatel2405/"
+  orcid: "https://orcid.org/0009-0009-1373-4461"
+  linkedin: "https://www.linkedin.com/in/drutkarshpatel2405"
+  github.com: "https://github.com/UtkarshPatel2405"
+
+bio: "Holding a PharmD and an MSc in Pharmacology (Distinction), I bridge molecular pharmacology with computational modeling. My research focuses on developing Python and machine learning workflows for structure-based docking, scaffold-aware QSAR modeling, and virtual screening of small molecules. With proven experience processing large bioactivity datasets and building open-source computational tools, I develop interpretable models grounded in physical and biological mechanisms."
+
+date_added: "2026-09-30"
