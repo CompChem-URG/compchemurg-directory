@@ -1,0 +1,23 @@
+name: "Luis Itza Vazquez-Salazar"
+surname_sort: "Vazquez-Salazar"
+affiliation: "Institute for Theoretical Physics,Heidelberg University"
+location: "Heidelberg, Germany."
+
+research_areas:
+  - "Generative modelling in chemistry"
+  - "Chemical space exploration"
+  - "Machine learning interatomic potentials"
+  - "Multiscale modelling"
+
+links:
+  website: "https://livazquezs.github.io/"
+  google_scholar: "https://scholar.google.com/citations?user=IY9bJXIAAAAJ"
+  orcid: "https://orcid.org/0000-0001-6347-5108"
+  linkedin: "https://www.linkedin.com/in/luis-itza-vazquez-salazar/"
+
+identities:
+  - "first-generation academic"
+
+bio: "I am originally from Mexico City. I studied chemistry at the National Autonomous University of Mexico. Later, I completed a master’s degree at the University of Groningen, supported by an ERASMUS+ scholarship from the European Union. After earning my MSc. degree, I pursued a PhD in physical chemistry at the University of Basel. At the end of my PhD, I received an SNSF fellowship for a postdoctoral stay at the Institute for Theoretical Physics at Heidelberg University."
+
+date_added: "2026-09-30"
