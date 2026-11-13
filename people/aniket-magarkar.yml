@@ -1,0 +1,15 @@
+name: "Aniket Magarkar"
+surname_sort: "Magarkar"
+affiliation: "Boehringer Ingelheim Phrama GmbH"
+
+research_areas:
+  - "Computational Chemistry"
+  - "Molecular Dynamics Simulations"
+  - "Free Energy and Alchemical methods"
+  - "AI/ML for binding affinity predictions"
+
+links:
+  google_scholar: "https://scholar.google.com/citations?user=h_BPJhIAAAAJ&hl=en"
+  linkedin: "https://www.linkedin.com/in/aniketmagarkar/"
+
+date_added: "2026-11-13"
